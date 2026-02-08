@@ -16,7 +16,6 @@
 /build
 
 #public
-/public/sw.*
 /public/workbox-*.js
 
 # misc
