@@ -4,9 +4,11 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import Layout from '../components/layout';
 import { getHeaderRes, getFooterRes, getAllEntries } from '../helper';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import 'nprogress/nprogress.css';
 import '../styles/third-party.css';
 import '../styles/style.css';
+import '../styles/theme.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import '@contentstack/live-preview-utils/dist/main.css';
 import { Props } from "../typescript/pages";
@@ -41,7 +43,7 @@ function MyApp(props: Props) {
   };
   const blogList: any = posts?.concat(archivePost);
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <meta
           name='application-name'
@@ -67,7 +69,7 @@ function MyApp(props: Props) {
       >
         <Component {...pageProps} />
       </Layout>
-    </>
+    </ThemeProvider>
   );
 }
 

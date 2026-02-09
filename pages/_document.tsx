@@ -11,6 +11,21 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    var theme = localStorage.getItem('theme');
+                    if (!theme) {
+                      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    }
+                    document.documentElement.setAttribute('data-theme', theme);
+                  } catch (e) {}
+                })();
+              `,
+            }}
+          />
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
             href='https://fonts.googleapis.com/css?family=Inter&amp;display=swap'
